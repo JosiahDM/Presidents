@@ -11,8 +11,8 @@
 		<form action="PresDisplay" method="POST">
 		<p>Enter the term number here (two digit number): 
 			<input type="text" name="termSelect" placeholder="enter term number"></p><br>
-		<input type="submit" name="PresLookup" value="Term Lookup">
-		<p><input type="submit" value="previous"><input type="submit" value="next"></p><br>
+		<input type="submit" name="search" value="Term Lookup">
+		<p><input type="submit" name="search" value="previous"><input type="submit" name="search" value="next"></p><br>
 		</form>
 </body>
 </html>
