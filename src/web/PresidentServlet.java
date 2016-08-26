@@ -20,24 +20,22 @@ public class PresidentServlet extends HttpServlet {
 		ServletContext context = getServletContext();
 		ParsePresidents parse = new ParsePresidents(context);
 		presidents = parse.getPresidents();
-		System.out.println("in init");
 
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("in doget");
+
 		req.getRequestDispatcher("/PresDisplay.jsp").forward(req, resp);
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("in dopost");
+
 		HttpSession session = req.getSession();
 
 		String choice = req.getParameter("search");
-		System.out.println("Choice: " + choice);
 
 		// Term lookup works, previous fails
 		String destination = "";
@@ -55,14 +53,13 @@ public class PresidentServlet extends HttpServlet {
 			destination = "/error.html";
 			break;
 		}
-		
 
 		getServletContext().getRequestDispatcher(destination).forward(req, resp);
-		
-		
+
 	}
-	
-	public String termLookup (HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+
+	public String termLookup(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
 		int termNumber = 0;
 		try {
 			termNumber = Integer.parseInt(req.getParameter("termSelect"));
@@ -71,15 +68,14 @@ public class PresidentServlet extends HttpServlet {
 		}
 		if (termNumber > 44 || termNumber < 1) {
 			return "/error.html";
+		} else {
+			session.setAttribute("president", presidents.get(termNumber - 1));
+			return "/PresDisplay.jsp";
 		}
-		else {
-		session.setAttribute("president", presidents.get(termNumber - 1));
-		return "/PresDisplay.jsp";
-		}
-		
+
 	}
-	
-	public String nextLookup (HttpSession session, HttpServletRequest req) {
+
+	public String nextLookup(HttpSession session, HttpServletRequest req) {
 		int termNumber = 0;
 		if (session.getAttribute("president") == null) {
 			session.setAttribute("president", presidents.get(1));
@@ -92,11 +88,11 @@ public class PresidentServlet extends HttpServlet {
 		session.setAttribute("president", presidents.get(termNumber - 1));
 		return "/PresDisplay.jsp";
 	}
-	
-	public String prevLookup (HttpSession session, HttpServletRequest req) {
+
+	public String prevLookup(HttpSession session, HttpServletRequest req) {
 		int termNumber = 0;
-		if(session.getAttribute("president") == null) {
-			session.setAttribute("president",  presidents.get(1));
+		if (session.getAttribute("president") == null) {
+			session.setAttribute("president", presidents.get(1));
 		}
 		President currentPres = (President) session.getAttribute("president");
 		termNumber = currentPres.getTermNumber() - 1;

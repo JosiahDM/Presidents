@@ -45,8 +45,8 @@ public class ParsePresidents {
 	    String lname = tokens[3].trim();
 	    int[] termArray = getTerms(tokens[4].trim());
 	    String party = tokens[5].trim();
-
-		return new President(number, fname, mname, lname, termArray[0], termArray[1], party);
+	    String image = tokens[6].trim();
+		return new President(number, fname, mname, lname, termArray[0], termArray[1], party, image);
 	}
 
 	private int[] getTerms(String terms) {

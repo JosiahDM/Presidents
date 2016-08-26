@@ -5,9 +5,10 @@ public class President {
 	private String firstName, middleName, lastName;
 	private int startYear, endYear;
 	private String party;
+	private String image;
 
 	public President(int termNumber, String firstName, String middleName, String lastName, int startYear, int endYear,
-			String party) {
+			String party, String image) {
 		this.termNumber = termNumber;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -15,6 +16,7 @@ public class President {
 		this.startYear = startYear;
 		this.endYear = endYear;
 		this.party = party;
+		this.image = image;
 	}
 
 	public int getTermNumber() {
@@ -71,6 +73,12 @@ public class President {
 
 	public void setParty(String party) {
 		this.party = party;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public void display() {
