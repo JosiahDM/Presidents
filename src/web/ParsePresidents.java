@@ -12,26 +12,40 @@ import javax.servlet.ServletContext;
 
 public class ParsePresidents {
 	private static final String INPUT_FILE = "WEB-INF/presidents.csv";
+	private static final String FUNFACTS = "WEB-INF/funfacts.csv";
 	private List<President> presidents = new ArrayList<>();
 	private ServletContext servletContext;
 	
 	public ParsePresidents(ServletContext servletContext) {
 		this.servletContext = servletContext;
-		
 		parse();
+		setFunFacts();
 	}
 	
 	public void parse() {
 		InputStream is = servletContext.getResourceAsStream(INPUT_FILE);
 		try (BufferedReader buf = new BufferedReader(
 				new InputStreamReader(is))) {
-
 			String line;
 			while ((line = buf.readLine()) != null) {
 				President p = buildPresident(line);
 				presidents.add(p);
 			}
-
+		} catch (IOException e) {
+			System.err.println(e);
+		}
+	}
+	
+	public void setFunFacts() {
+		InputStream is = servletContext.getResourceAsStream(FUNFACTS);
+		try (BufferedReader buf = new BufferedReader(
+				new InputStreamReader(is))) {
+			String line;
+			int currentPres = 0;
+			while ((line = buf.readLine()) != null) {
+				presidents.get(currentPres).setFunFact(line);
+				currentPres++;
+			}
 		} catch (IOException e) {
 			System.err.println(e);
 		}

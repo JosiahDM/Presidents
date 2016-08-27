@@ -6,6 +6,7 @@ public class President {
 	private int startYear, endYear;
 	private String party;
 	private String image;
+	private String funFact;
 
 	public President(int termNumber, String firstName, String middleName, String lastName, int startYear, int endYear,
 			String party, String image) {
@@ -86,6 +87,13 @@ public class President {
 				startYear, endYear, party);
 	}
 
+	public String getFunFact() {
+		return funFact;
+	}
+	public void setFunFact(String funFact) {
+		this.funFact = funFact;
+	}
+	
 	@Override
 	public String toString() {
 		return "President [termNumber=" + termNumber + ", firstName=" + firstName + ", middleName=" + middleName

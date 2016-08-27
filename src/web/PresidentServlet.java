@@ -2,6 +2,7 @@ package web;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,30 +16,26 @@ import javax.servlet.http.HttpSession;
 @SuppressWarnings("serial")
 public class PresidentServlet extends HttpServlet {
 	List<President> presidents;
+	List<President> filteredPresidents;
 
 	public void init() throws ServletException {
 		ServletContext context = getServletContext();
 		ParsePresidents parse = new ParsePresidents(context);
 		presidents = parse.getPresidents();
-
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		req.getRequestDispatcher("/PresDisplay.jsp").forward(req, resp);
-
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-
 		String choice = req.getParameter("search");
-
-		// Term lookup works, previous fails
 		String destination = "";
+
 		switch (choice) {
 		case "Term Lookup":
 			destination = termLookup(session, req, resp);
@@ -53,9 +50,7 @@ public class PresidentServlet extends HttpServlet {
 			destination = "/error.html";
 			break;
 		}
-
 		getServletContext().getRequestDispatcher(destination).forward(req, resp);
-
 	}
 
 	public String termLookup(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
@@ -67,9 +62,10 @@ public class PresidentServlet extends HttpServlet {
 			return "/error.html";
 		}
 		if (termNumber > 44 || termNumber < 1) {
-			return "/error.html";
+			session.setAttribute("president", presidents.get(0));
+			return "/PresDisplay.jsp";
 		} else {
-			session.setAttribute("president", presidents.get(termNumber - 1));
+			session.setAttribute("president", presidents.get(termNumber));
 			return "/PresDisplay.jsp";
 		}
 
@@ -85,7 +81,7 @@ public class PresidentServlet extends HttpServlet {
 		if (termNumber > 44) {
 			termNumber = termNumber - 44;
 		}
-		session.setAttribute("president", presidents.get(termNumber - 1));
+		session.setAttribute("president", presidents.get(termNumber));
 		return "/PresDisplay.jsp";
 	}
 
@@ -99,9 +95,18 @@ public class PresidentServlet extends HttpServlet {
 		if (termNumber < 1) {
 			termNumber = termNumber + 44;
 		}
-		session.setAttribute("president", presidents.get(termNumber - 1));
+		session.setAttribute("president", presidents.get(termNumber));
 		return "/PresDisplay.jsp";
-
 	}
-
+	
+	// Method to allow lambda filtering.
+	// example usage for later implementation (names starting with R):
+	// filteredPresidents = filter(presidents, (p) -> p.getLastName().charAt(0) == 'R');
+	public void filter(Predicate<President> predicate) {
+		for (President president : presidents) {
+			if (predicate.test(president)) {
+				filteredPresidents.add(president);
+			}
+		}
+	}
 }

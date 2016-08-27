@@ -8,7 +8,7 @@
 	<h1 align=center>Select the President That You Want to Learn More About:</h1>
 		<p align=center><strong>President Info: ${president}</strong></p>
 		<p align=center><img src="/PresidentsWeb${president.image}" alt="test" width=200px></p>
-		
+		<p align=center>${president.funFact}</p>
 		<form action="PresDisplay" method="POST">
 		<p>Enter the term number here (two digit number): 
 			<input type="text" name="termSelect" placeholder="enter term number">
