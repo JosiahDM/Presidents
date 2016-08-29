@@ -31,12 +31,12 @@ public class PresidentServlet extends HttpServlet {
 		try { 
 			term = Integer.parseInt(req.getParameter("termSelect"));
 		} catch(NumberFormatException nfe) {
-			dest = "/error.html";
+			term = 0;
+			dest = "/PresDisplay.jsp";
 		}
 		if (term > 44 || term < 1) {
 			term = 0;
 		}
-		System.out.println("test.");
 		req.setAttribute("president", presidents.get(term));
 		req.getRequestDispatcher(dest).forward(req, resp);
 	}
