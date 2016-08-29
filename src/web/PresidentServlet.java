@@ -52,10 +52,10 @@ public class PresidentServlet extends HttpServlet {
 		case "Term Lookup":
 			destination = termLookup(session, req, resp);
 			break;
-		case "previous":
+		case "<":
 			destination = prevLookup(session, req);
 			break;
-		case "next":
+		case ">":
 			destination = nextLookup(session, req);
 			break;
 		default:
