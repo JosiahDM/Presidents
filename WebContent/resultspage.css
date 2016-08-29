@@ -136,17 +136,6 @@ footer {background: #aaa;color:white;}
     border-radius:5px;
 }
 
-.searchButton {
-        margin-top:5px;
-        margin-bottom:0;
-        height:40px;
-        width:140px;
-        background-color: rgb(0, 39, 150);
-        font-size:.9em;
-        border: none;
-        color:white;
-}
-
 .button {
     height: 40px;
     width: 30px;
@@ -168,4 +157,20 @@ footer {background: #aaa;color:white;}
     background-color:rgba(255, 255, 255, 0.45);
     color:rgb(0, 39, 150);
     border:3px solid rgb(0, 39, 150);
+}
+
+#textFilter {
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.searchButton {
+        margin-top:5px;
+        margin-bottom:0;
+        height:40px;
+        width:140px;
+        background-color: rgb(0, 39, 150);
+        font-size:.9em;
+        border: none;
+        color:white;
 }
