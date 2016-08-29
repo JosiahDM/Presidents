@@ -3,17 +3,63 @@
 <html>
 <head>
 <title>Select the President</title>
+
+<link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
 <body>
-	<h1 align=center>Select the President That You Want to Learn More About:</h1>
-		<p align=center><strong>President Info: ${president}</strong></p>
+
+<div class="flex-container">
+<header>
+  <h1>Presidential Information Gallery</h1>
+</header>
+
+<ul>
+  <li><a class="active" href="index.html">Home</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Presidents</a>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="PresDisplay.jsp">Viewing Gallery</a>
+      <a href="https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States">Wikipedia - List of Presidents</a>
+    
+    </div>
+  </li>
+  <li><a href="about.html">About Us</a></li>
+</ul>
+
+<script>
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var d = 0; d < dropdowns.length; d++) {
+      var openDropdown = dropdowns[d];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+		<p align=center><h1>${president}</h1></p>
 		<p align=center><img src="/PresidentsWeb${president.image}" alt="test" width=200px></p>
 		<p align=center>${president.funFact}</p>
+		
 		<form action="PresDisplay" method="POST">
 		<p>Enter the term number here (two digit number): 
 			<input type="text" name="termSelect" placeholder="enter term number">
 		<input type="submit" name="search" value="Term Lookup"></p><br>
 		<p><input type="submit" name="search" value="previous"><input type="submit" name="search" value="next"></p><br>
 		</form>
+		
+<footer>Copyright © Josiah Moye and Steve Nagle</footer>
+</div>
 </body>
 </html>

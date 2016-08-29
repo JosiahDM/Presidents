@@ -26,7 +26,19 @@ public class PresidentServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/PresDisplay.jsp").forward(req, resp);
+		int term = 0;
+		String dest = "/PresDisplay.jsp";
+		try { 
+			term = Integer.parseInt(req.getParameter("termSelect"));
+		} catch(NumberFormatException nfe) {
+			dest = "/error.html";
+		}
+		if (term > 44 || term < 1) {
+			term = 0;
+		}
+		
+		req.setAttribute("president", presidents.get(term));
+		req.getRequestDispatcher(dest).forward(req, resp);
 	}
 
 	@Override
