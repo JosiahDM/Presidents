@@ -42,9 +42,13 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+	background-color: #f1f1f1
+}
 
-.show {display:block;}
+.show {
+	display:block;
+}
 
 .flex-container {
     display: -webkit-flex;
@@ -67,21 +71,24 @@ li.dropdown {
 header {
 	background: black;
 	color:white;
-	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	/* background-image: url("img/starsstripesbanner.jpg");
-	background-size: contain;
-	background-repeat: repeat-x; */ 
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black; 
 }
-footer {background: #aaa;color:white;}
-.nav {background:#eee;}
+
+footer {
+	background: #aaa;color:white;
+}
+
+.nav {
+	background:#eee;
+}
 
 .nav ul {
     list-style-type: none;
- padding: 0;
+ 	padding: 0;
 }
    
 .nav ul a {
- text-decoration: none;
+ 	text-decoration: none;
 }
 
 @media all and (min-width: 768px) {
@@ -93,6 +100,8 @@ footer {background: #aaa;color:white;}
 #splashBackground {
 	background-image: url("img/hr-flag.jpg");
 	background-size:cover;
+	height: 100vh;
+	padding-top: 20vh;
 }
 
 #searchString {
@@ -138,20 +147,15 @@ br {
         color:white;
 }
 
-/* #searchButton {
-  background: #0f1dba;
-  background-image: -webkit-linear-gradient(top, #0f1dba, #990c0c);
-  background-image: -moz-linear-gradient(top, #0f1dba, #990c0c);
-  background-image: -ms-linear-gradient(top, #0f1dba, #990c0c);
-  background-image: -o-linear-gradient(top, #0f1dba, #990c0c);
-  background-image: linear-gradient(to bottom, #0f1dba, #990c0c);
-  -webkit-border-radius: 40;
-  -moz-border-radius: 40;
-  border-radius: 40px;
-  font-family: Arial;
-  color: #fafafa;
-  font-size: 14px;
-  padding: 6px 12px 6px 12px;
-  text-decoration: none;
-} */
+.searchButton {
+        margin-top:5px;
+        margin-bottom:0;
+        height:30px;
+        width:120px;
+        background-color: rgb(0, 39, 150);
+        font-size:.9em;
+        border: none;
+        color:white;
+}
+
 	

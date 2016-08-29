@@ -13,16 +13,15 @@
 </header>
 
 <ul>
-  <li><a class="active" href="index.html">Home</a></li>
+  <li><div method="GET" action="PresDisplay"><a class="active" href="index.jsp">Home</a></div></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Presidents</a>
     <div class="dropdown-content" id="myDropdown">
       <a href="PresDisplay.jsp">Viewing Gallery</a>
       <a href="https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States">Wikipedia - List of Presidents</a>
-    
+
     </div>
   </li>
-  <li><a href="about.html">About Us</a></li>
 </ul>
 
 <script>
@@ -44,17 +43,18 @@ window.onclick = function(e) {
     }
   }
 }
+
 </script>
 
-<div id="splashBackground">
-	<div id="searchString">
-	<h1>Thanks for viewing our project!</h1><br><br>
-	<h2>This is a week 6 project at Skill Distillery, a Denver, CO based</h2>
-	<h2>full-stack Java/JavaScript web-app development boot camp.</h2>
-	<h3>Student contributors - Steve Nagle, Josiah Moye</h3>
-	</div>
+	<div id="splashBackground">
+	<form action="PresDisplay" method="GET">
+	<p align=center id="searchString">Enter a President's term number here to start:
 
-</div>
+		<input type="text" name="termSelect" placeholder="Enter term number">
+		<input id="searchButton" type="submit" name="search" value="Term Lookup"></p><br>
+	</form>
+	<!-- <p align=center><img id="declaration" src="img/hr-flag.jpg"></p> -->
+	<br><br><br><br><br><br><br></div>
 <footer>Copyright © Josiah Moye and Steve Nagle</footer>
 </div>
 </body>

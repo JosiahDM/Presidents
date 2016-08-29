@@ -73,7 +73,9 @@ public class PresidentServlet extends HttpServlet {
 		try {
 			termNumber = Integer.parseInt(req.getParameter("termSelect"));
 		} catch (NumberFormatException nfe) {
-			return "/error.html";
+			termNumber = 0;
+			session.setAttribute("president", presidents.get(termNumber));
+			return "/PresDisplay.jsp";
 		}
 		if (termNumber > 44 || termNumber < 1) {
 			session.setAttribute("president", presidents.get(0));

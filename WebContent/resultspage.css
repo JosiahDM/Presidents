@@ -43,9 +43,13 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+	background-color: #f1f1f1
+}
 
-.show {display:block;}
+.show {
+	display:block;
+}
 
 .flex-container {
     display: -webkit-flex;
@@ -69,20 +73,23 @@ header {
 	background: black;
 	color:white;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	/* background-image: url("img/starsstripesbanner.jpg");
-	background-size: contain;
-	background-repeat: repeat-x; */
+
 }
-footer {background: #aaa;color:white;}
-.nav {background:#eee;}
+footer {
+	background: #aaa;color:white;
+}
+
+.nav {
+	background:#eee;
+}
 
 .nav ul {
     list-style-type: none;
- padding: 0;
+ 	padding: 0;
 }
 
 .nav ul a {
- text-decoration: none;
+ 	text-decoration: none;
 }
 
 @media all and (min-width: 768px) {
@@ -119,7 +126,7 @@ footer {background: #aaa;color:white;}
 
 .transparent {
     display: inline-block;
-    background:rgba(255, 255, 255, 0.45);
+    background:rgba(255, 255, 255, 0.40);
     width: 70%;
     max-width: 600px;
     border-radius: 5px;
@@ -161,7 +168,7 @@ footer {background: #aaa;color:white;}
 
 #textFilter {
 	color: white;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	text-shadow: -1.25px 0 black, 0 1.25px black, 1.25px 0 black, 0 -1.25px black;
 }
 
 .searchButton {
