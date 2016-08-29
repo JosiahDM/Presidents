@@ -55,8 +55,8 @@ window.onclick = function(e) {
 		<form action="PresDisplay" method="POST">
 		<p>Enter the term number here (two digit number): 
 			<input type="text" name="termSelect" placeholder="enter term number">
-		<input type="submit" name="search" value="Term Lookup"></p><br>
-		<p><input type="submit" name="search" value="previous"><input type="submit" name="search" value="next"></p><br>
+		<input id = searchButton type="submit" name="search" value="Term Lookup"></p><br>
+		<p><input id="searchButton" type="submit" name="search" value="previous"><input id="searchButton" type="submit" name="search" value="next"></p><br>
 		</form>
 		
 <footer>Copyright © Josiah Moye and Steve Nagle</footer>

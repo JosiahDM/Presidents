@@ -99,3 +99,21 @@ footer {background: #aaa;color:white;}
 	color:white;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
+
+#searchButton {
+  background: #0f1dba;
+  background-image: -webkit-linear-gradient(top, #0f1dba, #990c0c);
+  background-image: -moz-linear-gradient(top, #0f1dba, #990c0c);
+  background-image: -ms-linear-gradient(top, #0f1dba, #990c0c);
+  background-image: -o-linear-gradient(top, #0f1dba, #990c0c);
+  background-image: linear-gradient(to bottom, #0f1dba, #990c0c);
+  -webkit-border-radius: 40;
+  -moz-border-radius: 40;
+  border-radius: 40px;
+  font-family: Arial;
+  color: #fafafa;
+  font-size: 14px;
+  padding: 8px 16px 8px 16px;
+  text-decoration: none;
+}
+	
