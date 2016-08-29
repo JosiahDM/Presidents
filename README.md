@@ -19,4 +19,6 @@ This project was made after a week of CSS/HTML and Java Servlet programming. No 
 - Clicking "Viewing Gallery" will take you to president #1, but clicking next/previous after that will continue from wherever the session was stored. We need to close the session when user navigates away from the PresDisplay page. This was one of the main challenges of the project--linking the requests to the correct session/servlet. 
 - UI could be a bit smoother and more cohesive. 
 
+### Collaborators:
+Josiah Moye and Steve Nagle
 
