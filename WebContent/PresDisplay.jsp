@@ -51,16 +51,29 @@
     <div class="contentArea">
         <div class="transparent">
 
-    		<p align=center><h1>${president}</h1></p>
-    		<p align=center><img src="/PresidentsWeb${president.image}" alt="test" width=200px></p>
-    		<p align=center>${president.funFact}</p>
+    		<p align=center>
+                <c:choose>
+					<c:when test="${president.termNumber != 0}">
+						<h1>#${president.termNumber} ${president.firstName} ${president.middleName} ${president.lastName}</h1>
+                        <h3 align=center>${president.startYear}-${president.endYear}</h3>
+                        <p align=center><img src="/PresidentsWeb${president.image}" alt="test" width=200px></p>
+                        <p align=center><strong>Fun Fact:</strong> ${president.funFact}</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p align=center><img src="/PresidentsWeb${president.image}" alt="test" width=200px></p>
+                        <p align=center><strong>${president.funFact}</strong></p>
+                    </c:otherwise>
+				</c:choose>
+            </p>
+
 
     		<form action="PresDisplay" method="POST">
-    		<p>Enter the term number here (two digit number):
-    			<input type="text" name="termSelect" placeholder="enter term number">
-    		<input type="submit" name="search" value="Term Lookup"></p><br>
-    		<p><input type="submit" name="search" value="previous"><input type="submit" name="search" value="next"></p><br>
+    			<input id="textInput" type="text" name="termSelect" placeholder="Enter Term Number Here"><br>
+        		<input class="searchButton" type="submit" name="search" value="Term Lookup"></p><br>
+    		    <input class="button" type="submit" name="search" value="<">
+                <input class="button" type="submit" name="search" value=">">
     		</form>
+
         </div>
     </div>
     <footer>Copyright � Josiah Moye and Steve Nagle</footer>

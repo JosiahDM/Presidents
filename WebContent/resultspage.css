@@ -1,3 +1,4 @@
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -105,7 +106,15 @@ footer {background: #aaa;color:white;}
     background-image: url("img/muricabackground.jpg");
     background-size: cover;
     width: auto;
+}
 
+.contentArea h1, h3, p {
+    margin: 10px;
+    padding: 0;
+}
+
+.contentArea p {
+    font-size: 1.2em;
 }
 
 .transparent {
@@ -114,5 +123,49 @@ footer {background: #aaa;color:white;}
     width: 70%;
     max-width: 600px;
     border-radius: 5px;
+}
 
+.transparent img {
+    border-radius: 10px;
+}
+
+#textInput {
+    width:200px;
+    height:25px;
+    font-size: .9em;
+    border-radius:5px;
+}
+
+.searchButton {
+        margin-top:5px;
+        margin-bottom:0;
+        height:40px;
+        width:140px;
+        background-color: rgb(0, 39, 150);
+        font-size:.9em;
+        border: none;
+        color:white;
+}
+
+.button {
+    height: 40px;
+    width: 30px;
+    margin-top:0;
+    font-size: 1.1em;
+    background-color:rgb(0, 39, 150);
+    margin-bottom: 15px;
+    border:none;
+    color:white;
+}
+
+.searchButton:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    color:rgb(0, 39, 150);
+    border:3px solid rgb(0, 39, 150);
+}
+
+.button:hover {
+    background-color:rgba(255, 255, 255, 0.45);
+    color:rgb(0, 39, 150);
+    border:3px solid rgb(0, 39, 150);
 }
