@@ -36,7 +36,7 @@ public class PresidentServlet extends HttpServlet {
 		if (term > 44 || term < 1) {
 			term = 0;
 		}
-		
+		System.out.println("test.");
 		req.setAttribute("president", presidents.get(term));
 		req.getRequestDispatcher(dest).forward(req, resp);
 	}
@@ -64,6 +64,8 @@ public class PresidentServlet extends HttpServlet {
 		}
 		getServletContext().getRequestDispatcher(destination).forward(req, resp);
 	}
+	
+	
 
 	public String termLookup(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {

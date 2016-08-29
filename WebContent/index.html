@@ -19,10 +19,9 @@
     <div class="dropdown-content" id="myDropdown">
       <a href="PresDisplay.jsp">Viewing Gallery</a>
       <a href="https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States">Wikipedia - List of Presidents</a>
-    
+
     </div>
   </li>
-  <li><a href="about.html">About Us</a></li>
 </ul>
 
 <script>
@@ -44,11 +43,29 @@ window.onclick = function(e) {
     }
   }
 }
+
+function filterList() {
+    document.getElementById("filterDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var d = 0; d < dropdowns.length; d++) {
+      var openDropdown = dropdowns[d];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 </script>
 
 	<div id="splashBackground">
 	<form action="PresDisplay" method="GET">
-	<p id="searchString">Enter a President's term number here to start: 
+	<p id="searchString">Enter a President's term number here to start:
 		<input type="text" name="termSelect" placeholder="Enter term number">
 		<input type="submit" name="search" value="Term Lookup"></p><br>
 	</form>
