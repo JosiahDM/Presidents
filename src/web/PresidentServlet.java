@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 public class PresidentServlet extends HttpServlet {
 	List<President> presidents;
 	List<President> filteredPresidents;
+	public static final int LAST_PRESIDENT = 44;
+	public static final int FIRST_PRESIDENT = 1;
 
 	public void init() throws ServletException {
 		ServletContext context = getServletContext();
@@ -27,18 +29,19 @@ public class PresidentServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int term = 0;
+		HttpSession session = req.getSession();
+		
 		String dest = "/PresDisplay.jsp";
 		try { 
 			term = Integer.parseInt(req.getParameter("termSelect"));
 		} catch(NumberFormatException nfe) {
 			term = 0;
-			dest = "/PresDisplay.jsp";
 		}
 		if (term > 44 || term < 1) {
 			term = 0;
 		}
-		req.setAttribute("president", presidents.get(term));
-		req.getRequestDispatcher(dest).forward(req, resp);
+		session.setAttribute("president", presidents.get(term));
+		getServletContext().getRequestDispatcher(dest).forward(req, resp);
 	}
 
 	@Override
@@ -46,17 +49,17 @@ public class PresidentServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		String choice = req.getParameter("search");
-		String destination = "";
+		String destination = "/PresDisplay.jsp";
 
 		switch (choice) {
 		case "Term Lookup":
-			destination = termLookup(session, req, resp);
+			termLookup(session, req);
 			break;
 		case "<":
-			destination = prevLookup(session, req);
+			prevLookup(session);
 			break;
 		case ">":
-			destination = nextLookup(session, req);
+			nextLookup(session);
 			break;
 		default:
 			destination = "/error.html";
@@ -64,55 +67,45 @@ public class PresidentServlet extends HttpServlet {
 		}
 		getServletContext().getRequestDispatcher(destination).forward(req, resp);
 	}
-	
-	
 
-	public String termLookup(HttpSession session, HttpServletRequest req, HttpServletResponse resp)
+	public void termLookup(HttpSession session, HttpServletRequest req)
 			throws IOException, ServletException {
 		int termNumber = 0;
 		try {
 			termNumber = Integer.parseInt(req.getParameter("termSelect"));
 		} catch (NumberFormatException nfe) {
 			termNumber = 0;
-			session.setAttribute("president", presidents.get(termNumber));
-			return "/PresDisplay.jsp";
 		}
 		if (termNumber > 44 || termNumber < 1) {
-			session.setAttribute("president", presidents.get(0));
-			return "/PresDisplay.jsp";
-		} else {
-			session.setAttribute("president", presidents.get(termNumber));
-			return "/PresDisplay.jsp";
+			termNumber = 0;
 		}
-
+		session.setAttribute("president", presidents.get(termNumber));
 	}
 
-	public String nextLookup(HttpSession session, HttpServletRequest req) {
+	public void nextLookup(HttpSession session) {
 		int termNumber = 0;
-		if (session.getAttribute("president") == null) {
+		President currentPres = (President) session.getAttribute("president");
+		if (currentPres == null) {
 			session.setAttribute("president", presidents.get(1));
 		}
-		President currentPres = (President) session.getAttribute("president");
 		termNumber = currentPres.getTermNumber() + 1;
-		if (termNumber > 44) {
-			termNumber = termNumber - 44;
+		if (termNumber > LAST_PRESIDENT) {
+			termNumber = FIRST_PRESIDENT;
 		}
 		session.setAttribute("president", presidents.get(termNumber));
-		return "/PresDisplay.jsp";
 	}
 
-	public String prevLookup(HttpSession session, HttpServletRequest req) {
+	public void prevLookup(HttpSession session) {
 		int termNumber = 0;
-		if (session.getAttribute("president") == null) {
+		President currentPres = (President) session.getAttribute("president");
+		if (currentPres == null) {
 			session.setAttribute("president", presidents.get(1));
 		}
-		President currentPres = (President) session.getAttribute("president");
 		termNumber = currentPres.getTermNumber() - 1;
-		if (termNumber < 1) {
-			termNumber = termNumber + 44;
+		if (termNumber < FIRST_PRESIDENT) {
+			termNumber = LAST_PRESIDENT;
 		}
 		session.setAttribute("president", presidents.get(termNumber));
-		return "/PresDisplay.jsp";
 	}
 	
 	// Method to allow lambda filtering.
